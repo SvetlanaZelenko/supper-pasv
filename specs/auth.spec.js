@@ -1,28 +1,38 @@
-import supertest from 'supertest'
+
 import { expect } from 'chai'
-import 'dotenv/config'
+import AuthHelper from '../helpers/auth-helper'
 
-describe('Auth', function () {
-    const request = supertest('process.env.BASE_URL')
+describe('Auth', function() {
+    let authHelper = new AuthHelper()
 
-    it('Succesful log in', function () {
-        request
-            .post('/auth')
-            .send({login: process.env.LOGIN, password: process.env.PASSWORD})
-            .end(function (err, res) {
-                expect(res.statusCode).to.eq(200)
-                expect(res.body.token).not.to.be.undefined
-            })
+
+    describe('Successful log in', function() {
+
+        before(async function() {
+            await authHelper.login(process.env.LOGIN, process.env.PASSWORD)
+        })
+
+        it('response status code is 200', function() {
+            expect(authHelper.response.statusCode).to.eq(200)
+        })
+
+        it('response body contains authorization token', function() {
+            expect(authHelper.response.body.token).not.to.be.undefined
+        })
     })
 
-    it('Log in with invalid credentials', function () {
-        const request = supertest('http://paysis.herokuapp.com')
-        request
-            .post('/auth')
-            .send({login: 'invalid', password: 'invalid'})
-            .end(function (err, res) {
-                expect(res.statusCode).to.eq(404)
-                expect(res.body.message).to.eq('Wrong login or password.')
-            })
+    describe('Log in with invalid credentials', function() {
+
+        before(async function() {
+            await authHelper.login('invalid', 'invalid')
+        })
+
+        it('response status code is 404', function() {
+            expect(authHelper.response.statusCode).to.eq(404)
+        })
+
+        it('response body contains error message', function() {
+            expect(authHelper.response.body.message).to.eq('Wrong login or password.')
+        })
     })
 })
