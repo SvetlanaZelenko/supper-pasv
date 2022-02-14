@@ -14,6 +14,7 @@ describe('Auth', function() {
 
         it('response status code is 200', function() {
             expect(authHelper.response.statusCode).to.eq(200)
+
         })
 
         it('response body contains authorization token', function() {
