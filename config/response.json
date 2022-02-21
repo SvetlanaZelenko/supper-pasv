@@ -1,0 +1,30 @@
+{
+  "auth": {
+    "valid": {
+      "token": "c544729b-2381-43c8-9a4f-0be34c4cfa2b"
+    },
+    "invalid": {
+      "message": "Wrong login or password."
+    }
+  },
+  "users": {
+    "create": {
+      "id": "97044e42-f62b-469c-a5ae-30750af7df99",
+      "amount": 1000
+    },
+    "getAll": [
+      {
+        "id": "97044e42-f62b-469c-a5ae-30750af7df98",
+        "amount": 1000
+      },
+      {
+      "id": "97044e42-f62b-469c-a5ae-30750af7df99",
+      "amount": 1000
+      }
+    ],
+    "delete": {
+      "message": "User deleted."
+    }
+  }
+}
+
