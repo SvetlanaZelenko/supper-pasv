@@ -26,8 +26,8 @@ jobs:
       run: npm i
     - name: Run API tests
       env:
-        BASE_URL: ${{ sectets.BASEURL }}
-        LOGIN: ${{ sectets.LOGIN }}
-        PASSWORD: ${{ sectets.PASSWORD }}
-        PORT: ${{ sectets.PORT }}
+        BASE_URL: ${{ secrets.BASEURL }}
+        LOGIN: ${{ secrets.LOGIN }}
+        PASSWORD: ${{ secrets.PASSWORD }}
+        PORT: ${{ secrets.PORT }}
       run: npm test
