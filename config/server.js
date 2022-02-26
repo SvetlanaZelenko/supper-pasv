@@ -44,5 +44,3 @@ async function start(port) {
         })
     }
 
-        export { start }
-
