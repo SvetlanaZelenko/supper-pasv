@@ -23,11 +23,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - name: Install dependencies
-     run: npm i
+      run: npm i
     - name: Run API tests
-    env:
-    BASE_URL: ${{ sectets.BASEURL }}
-    LOGIN: ${{ sectets.BASEURL }}
-    PASSWORD: ${{ sectets.BASEURL }}
-    PORT: ${{ sectets.BASEURL }}
- run: npm test
+      env:
+        BASE_URL: ${{ sectets.BASEURL }}
+        LOGIN: ${{ sectets.LOGIN }}
+        PASSWORD: ${{ sectets.PASSWORD }}
+        PORT: ${{ sectets.PORT }}
+      run: npm test
