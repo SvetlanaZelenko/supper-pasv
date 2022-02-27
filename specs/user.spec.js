@@ -12,10 +12,7 @@ describe('Users', function () {
         await userHelper.create()
         userId = userHelper.response.body.id
     })
-    after(async function() {
-        const configHelper = new ConfigHelper()
-        await configHelper.wipeData()
-    })
+
 
     describe('User creation', function () {
         before(async function () {
@@ -81,7 +78,5 @@ describe('Users', function () {
         })
     })
 })
-
-
 
 
