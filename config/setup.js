@@ -21,3 +21,9 @@ after(async function() {
         await configHelper.wipeData()
     }
 })
+after(async function() {
+    if (!baseUrl.includes(port)) {
+        const configHelper = new ConfigHelper()
+        await configHelper.wipeData()
+    }
+})
