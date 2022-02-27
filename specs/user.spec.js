@@ -12,10 +12,7 @@ describe('Users', function () {
         await userHelper.create()
         userId = userHelper.response.body.id
     })
-    after(async function() {
-        const configHelper = new ConfigHelper()
-        await configHelper.wipeData()
-    })
+
 
     describe('User creation', function () {
         before(async function () {
@@ -67,19 +64,19 @@ describe('Users', function () {
             expect(getRandomItem(userHelper.response.body).amount).not.to.be.undefined
         })
     })
-        describe('User deletion', function () {
-            before(async function () {
-                await userHelper.delete(userId)
-            })
-            it('response status is 200', function () {
-                expect(userHelper.response.statusCode).to.eq(200)
-            })
-            it('response body contains success message', function() {
-                expect(userHelper.response.body.message).to.eq('User deleted.')
-            })
+    describe('User deletion', function() {
+        before(async function() {
+            await userHelper.delete(userId)
+        })
+
+        it('response status code is 200', function () {
+            expect(userHelper.response.statusCode).to.eq(200)
+        })
+
+        it('response body contains success message', function() {
+            expect(userHelper.response.body.message).to.eq('User deleted.')
         })
     })
-
-
+})
 
 

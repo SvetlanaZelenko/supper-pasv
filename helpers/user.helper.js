@@ -12,6 +12,15 @@ class UsersHelper {
        this.response = res
       })
  }
+    async delete(id) {
+        await supertest(process.env.BASE_URL)
+            .delete('/users')
+            .set('Authorization', `Bearer ${process.env.TOKEN}`)
+            .send({ id: id })
+            .then(res => {
+                this.response = res
+            })
+    }
     async getById(id) {
         await supertest(process.env.BASE_URL)
             .get(`/users?id=${id}`)
@@ -28,15 +37,7 @@ class UsersHelper {
                     this.response = res
                 })
         }
-            async delete(id) {
-                await supertest(process.env.BASE_URL)
-                    .delete('/users')
-                    .set('Authorization', `Bearer ${process.env.TOKEN}`)
-                    .send({id: id})
-                    .then(res => {
-                        this.response = res
-                    })
-        }
+
     }
 
 export default UsersHelper
