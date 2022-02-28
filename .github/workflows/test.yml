@@ -30,4 +30,4 @@ jobs:
         LOGIN: ${{ secrets.LOGIN }}
         PASSWORD: ${{ secrets.PASSWORD }}
         PORT: ${{ secrets.PORT }}
-      run: npm test
+        run: npm test
