@@ -43,4 +43,5 @@ async function start(port) {
             server.close()
         })
     }
+export { start }
 
