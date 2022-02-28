@@ -24,9 +24,9 @@ jobs:
     - name: Install dependensies
       run: npm i
     - name: Run API tests
-      env:
-          BASE_URL: ${{ secrets.BASE_URL }}
-          LOGIN: ${{ secrets.LOGIN }}
-          PASSWORD: ${{ secrets.PASSWORD }}
-          PORT: ${{ secrets.PORT }}
+    env:
+      BASE_URL: ${{ secrets.BASE_URL }}
+      LOGIN: ${{ secrets.LOGIN }}
+      PASSWORD: ${{ secrets.PASSWORD }}
+      PORT: ${{ secrets.PORT }}
       run: npm test
